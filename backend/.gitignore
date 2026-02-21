@@ -33,5 +33,3 @@ lerna-debug.log*
 .DS_Store
 
 /generated/prisma
-/generated
-wrangler.jsonc
