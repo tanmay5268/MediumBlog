@@ -1,7 +1,9 @@
+import Image from "next/image";
+import imm from "@/public/undraw_blogging_38kl.svg"
 import { WordRotate } from "@/components/ui/word-rotate"
 const Hero = () => {
   return (
-    <div id="hero" className=" pt-15 pb-10 h-content w-full">
+    <div id="hero" className=" pt-15 sm:flex pb-10 h-content w-full">
       <div className="md:mx-auto md:max-w-[75rem] h-full">
         <div className=" text-8xl max-sm:text-[3.8rem] max-sm:mx-4 flex flex-col justify-between h-full">
           <div className=" font-[family-name:var(--font-story-script)]">
@@ -21,12 +23,19 @@ const Hero = () => {
           </div>
           <button
             type="button"
-            className="h-10 cursor-pointer mt-10 max-sm:mt-5 font-[family-name:var(--font-story-script)] w-45   bg-[#191919] text-[#fffff5] text-[20px] flex items-center justify-center-safe rounded-4xl p-3"
+            className="h-10 cursor-pointer max-sm:bg-[#6b62f6] mt-10 max-sm:mt-5 font-[family-name:var(--font-story-script)] w-45   bg-[#191919] text-[#fffff5] text-[20px] flex items-center justify-center-safe rounded-4xl p-3"
           >
             Start reading
           </button>
         </div>
-      </div>
+          </div>
+          <Image className="mr-1 max-sm:hidden" src={imm}
+              alt="Illustration"
+              width={600}
+              height={600}
+          >
+              
+          </Image>
     </div>
   );
 };
