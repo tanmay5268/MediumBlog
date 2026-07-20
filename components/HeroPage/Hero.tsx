@@ -14,7 +14,7 @@ const Hero = () => {
           </div>
           <div className="font-[family-name:var(--font-story-script)] flex flex-col sm:flex-row sm:items-baseline sm:gap-x-4">
             <span>Share</span>
-            <WordRotate words={["Knowledge", "Experience","thoughts"]} />
+            <WordRotate duration={1000} words={["Knowledge", "Experience","thoughts"]} />
             <span className="max-sm:hidden">. .</span>
           </div>
           <div className="text-xl max-sm:text-lg mt-7 font-[family-name:var(--font-geist-mono)]">
@@ -33,6 +33,7 @@ const Hero = () => {
               alt="Illustration"
               width={600}
               height={600}
+              loading="eager"
           >
               
           </Image>

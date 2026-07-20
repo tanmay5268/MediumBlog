@@ -12,7 +12,7 @@
 
 import { PostStatus, UserRole } from "@/generated/prisma/client";
 import { faker } from "@faker-js/faker";
-import { prisma } from "@/app/lib/client";
+import { prisma } from "@/app/utils/client";
 
 // ---------------------------------------------------------------------------
 // CONFIG — bump SCALE up once the small run works
