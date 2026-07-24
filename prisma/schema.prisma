@@ -37,12 +37,29 @@ model User {
   comments      Comment[]
   likes         Like[]
   bookmarks     Bookmark[]
+  images        Image[]
 
   accounts      Account[]
   sessions      Session[]
 
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
+}
+
+model Category {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  slug        String   @unique
+  description String?
+  parentId    String?
+  parent      Category? @relation("CategoryHierarchy", fields: [parentId], references: [id], onDelete: SetNull)
+  children    Category[] @relation("CategoryHierarchy")
+  posts       Post[]
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([parentId])
 }
 
 model Post {
@@ -63,10 +80,16 @@ model Post {
   authorId    String
   author      User        @relation(fields: [authorId], references: [id], onDelete: Cascade)
 
+  categoryId  String?
+  category    Category?   @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+
   tags        PostTag[]
   comments    Comment[]
   likes       Like[]
   bookmarks   Bookmark[]
+  images      Image[]
+
+  searchVector String?   @db.Text
 
   createdAt   DateTime    @default(now())
   updatedAt   DateTime    @updatedAt
@@ -74,6 +97,7 @@ model Post {
   @@index([authorId])
   @@index([status])
   @@index([publishedAt])
+  @@index([categoryId])
 }
 
 model Tag {
@@ -83,6 +107,9 @@ model Tag {
   slug     String    @unique
 
   posts    PostTag[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model PostTag {
@@ -103,12 +130,19 @@ model Comment {
   postId    String
   authorId  String
 
-  post       Post @relation(fields: [postId], references: [id], onDelete: Cascade)
-  author     User @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  parentId  String?
+  parent    Comment? @relation("CommentReplies", fields: [parentId], references: [id], onDelete: Cascade)
+  replies   Comment[] @relation("CommentReplies")
+
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  author    User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@index([postId])
+  @@index([parentId])
+  @@index([authorId])
 }
 
 model Like {
@@ -133,6 +167,29 @@ model Bookmark {
   createdAt DateTime @default(now())
 
   @@id([userId, postId])
+}
+
+model Image {
+  id          String   @id @default(cuid())
+  url         String
+  alt         String?
+  width       Int?
+  height      Int?
+  format      String?
+  size        Int?
+  blurDataUrl String?
+
+  postId      String?
+  post        Post?    @relation(fields: [postId], references: [id], onDelete: SetNull)
+
+  authorId    String
+  author      User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([postId])
+  @@index([authorId])
 }
 
 //

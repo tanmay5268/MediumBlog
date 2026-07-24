@@ -28,18 +28,24 @@ export type TagMinAggregateOutputType = {
   id: string | null
   name: string | null
   slug: string | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type TagMaxAggregateOutputType = {
   id: string | null
   name: string | null
   slug: string | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type TagCountAggregateOutputType = {
   id: number
   name: number
   slug: number
+  createdAt: number
+  updatedAt: number
   _all: number
 }
 
@@ -48,18 +54,24 @@ export type TagMinAggregateInputType = {
   id?: true
   name?: true
   slug?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type TagMaxAggregateInputType = {
   id?: true
   name?: true
   slug?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type TagCountAggregateInputType = {
   id?: true
   name?: true
   slug?: true
+  createdAt?: true
+  updatedAt?: true
   _all?: true
 }
 
@@ -139,6 +151,8 @@ export type TagGroupByOutputType = {
   id: string
   name: string
   slug: string
+  createdAt: Date
+  updatedAt: Date
   _count: TagCountAggregateOutputType | null
   _min: TagMinAggregateOutputType | null
   _max: TagMaxAggregateOutputType | null
@@ -166,6 +180,8 @@ export type TagWhereInput = {
   id?: Prisma.StringFilter<"Tag"> | string
   name?: Prisma.StringFilter<"Tag"> | string
   slug?: Prisma.StringFilter<"Tag"> | string
+  createdAt?: Prisma.DateTimeFilter<"Tag"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Tag"> | Date | string
   posts?: Prisma.PostTagListRelationFilter
 }
 
@@ -173,6 +189,8 @@ export type TagOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   slug?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   posts?: Prisma.PostTagOrderByRelationAggregateInput
 }
 
@@ -183,6 +201,8 @@ export type TagWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.TagWhereInput | Prisma.TagWhereInput[]
   OR?: Prisma.TagWhereInput[]
   NOT?: Prisma.TagWhereInput | Prisma.TagWhereInput[]
+  createdAt?: Prisma.DateTimeFilter<"Tag"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Tag"> | Date | string
   posts?: Prisma.PostTagListRelationFilter
 }, "id" | "name" | "slug">
 
@@ -190,6 +210,8 @@ export type TagOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   slug?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   _count?: Prisma.TagCountOrderByAggregateInput
   _max?: Prisma.TagMaxOrderByAggregateInput
   _min?: Prisma.TagMinOrderByAggregateInput
@@ -202,12 +224,16 @@ export type TagScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"Tag"> | string
   name?: Prisma.StringWithAggregatesFilter<"Tag"> | string
   slug?: Prisma.StringWithAggregatesFilter<"Tag"> | string
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"Tag"> | Date | string
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Tag"> | Date | string
 }
 
 export type TagCreateInput = {
   id?: string
   name: string
   slug: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
   posts?: Prisma.PostTagCreateNestedManyWithoutTagInput
 }
 
@@ -215,6 +241,8 @@ export type TagUncheckedCreateInput = {
   id?: string
   name: string
   slug: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
   posts?: Prisma.PostTagUncheckedCreateNestedManyWithoutTagInput
 }
 
@@ -222,6 +250,8 @@ export type TagUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   posts?: Prisma.PostTagUpdateManyWithoutTagNestedInput
 }
 
@@ -229,6 +259,8 @@ export type TagUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   posts?: Prisma.PostTagUncheckedUpdateManyWithoutTagNestedInput
 }
 
@@ -236,36 +268,48 @@ export type TagCreateManyInput = {
   id?: string
   name: string
   slug: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type TagUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type TagUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type TagCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   slug?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type TagMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   slug?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type TagMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   slug?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type TagScalarRelationFilter = {
@@ -291,12 +335,16 @@ export type TagCreateWithoutPostsInput = {
   id?: string
   name: string
   slug: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type TagUncheckedCreateWithoutPostsInput = {
   id?: string
   name: string
   slug: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type TagCreateOrConnectWithoutPostsInput = {
@@ -319,12 +367,16 @@ export type TagUpdateWithoutPostsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type TagUncheckedUpdateWithoutPostsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -362,6 +414,8 @@ export type TagSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = ru
   id?: boolean
   name?: boolean
   slug?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   posts?: boolean | Prisma.Tag$postsArgs<ExtArgs>
   _count?: boolean | Prisma.TagCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["tag"]>
@@ -370,21 +424,27 @@ export type TagSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extension
   id?: boolean
   name?: boolean
   slug?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
 }, ExtArgs["result"]["tag"]>
 
 export type TagSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
   slug?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
 }, ExtArgs["result"]["tag"]>
 
 export type TagSelectScalar = {
   id?: boolean
   name?: boolean
   slug?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
 }
 
-export type TagOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "slug", ExtArgs["result"]["tag"]>
+export type TagOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "slug" | "createdAt" | "updatedAt", ExtArgs["result"]["tag"]>
 export type TagInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   posts?: boolean | Prisma.Tag$postsArgs<ExtArgs>
   _count?: boolean | Prisma.TagCountOutputTypeDefaultArgs<ExtArgs>
@@ -401,6 +461,8 @@ export type $TagPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
     id: string
     name: string
     slug: string
+    createdAt: Date
+    updatedAt: Date
   }, ExtArgs["result"]["tag"]>
   composites: {}
 }
@@ -828,6 +890,8 @@ export interface TagFieldRefs {
   readonly id: Prisma.FieldRef<"Tag", 'String'>
   readonly name: Prisma.FieldRef<"Tag", 'String'>
   readonly slug: Prisma.FieldRef<"Tag", 'String'>
+  readonly createdAt: Prisma.FieldRef<"Tag", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"Tag", 'DateTime'>
 }
     
 

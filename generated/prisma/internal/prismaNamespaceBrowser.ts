@@ -52,12 +52,14 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   User: 'User',
+  Category: 'Category',
   Post: 'Post',
   Tag: 'Tag',
   PostTag: 'PostTag',
   Comment: 'Comment',
   Like: 'Like',
   Bookmark: 'Bookmark',
+  Image: 'Image',
   Account: 'Account',
   Session: 'Session',
   VerificationToken: 'VerificationToken'
@@ -95,6 +97,19 @@ export const UserScalarFieldEnum = {
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
 
 
+export const CategoryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  slug: 'slug',
+  description: 'description',
+  parentId: 'parentId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typeof CategoryScalarFieldEnum]
+
+
 export const PostScalarFieldEnum = {
   id: 'id',
   title: 'title',
@@ -105,6 +120,8 @@ export const PostScalarFieldEnum = {
   status: 'status',
   publishedAt: 'publishedAt',
   authorId: 'authorId',
+  categoryId: 'categoryId',
+  searchVector: 'searchVector',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -115,7 +132,9 @@ export type PostScalarFieldEnum = (typeof PostScalarFieldEnum)[keyof typeof Post
 export const TagScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  slug: 'slug'
+  slug: 'slug',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type TagScalarFieldEnum = (typeof TagScalarFieldEnum)[keyof typeof TagScalarFieldEnum]
@@ -134,7 +153,9 @@ export const CommentScalarFieldEnum = {
   content: 'content',
   postId: 'postId',
   authorId: 'authorId',
-  createdAt: 'createdAt'
+  parentId: 'parentId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type CommentScalarFieldEnum = (typeof CommentScalarFieldEnum)[keyof typeof CommentScalarFieldEnum]
@@ -156,6 +177,24 @@ export const BookmarkScalarFieldEnum = {
 } as const
 
 export type BookmarkScalarFieldEnum = (typeof BookmarkScalarFieldEnum)[keyof typeof BookmarkScalarFieldEnum]
+
+
+export const ImageScalarFieldEnum = {
+  id: 'id',
+  url: 'url',
+  alt: 'alt',
+  width: 'width',
+  height: 'height',
+  format: 'format',
+  size: 'size',
+  blurDataUrl: 'blurDataUrl',
+  postId: 'postId',
+  authorId: 'authorId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ImageScalarFieldEnum = (typeof ImageScalarFieldEnum)[keyof typeof ImageScalarFieldEnum]
 
 
 export const AccountScalarFieldEnum = {
