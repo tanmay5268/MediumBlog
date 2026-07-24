@@ -4,15 +4,11 @@ import { useState, useEffect, useCallback } from "react";
 import { SearchIcon, XIcon } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { BlogFeed } from "@/components/blog-feed";
-import { Post } from "@/components/blog-feed";
 
-interface SearchResultsProps {
-  initialPosts?: Post[];
-}
 
-export function SearchResults({ initialPosts = [] }: SearchResultsProps) {
+export function SearchResults({ initialPosts = [] }) {
   const [query, setQuery] = useState("");
-  const [results, setResults] = useState<Post[]>(initialPosts);
+  const [results, setResults] = useState(initialPosts);
   const [loading, setLoading] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
   const [nextCursor, setNextCursor] = useState<string | null>(null);
