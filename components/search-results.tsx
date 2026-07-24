@@ -34,7 +34,7 @@ export function SearchResults({ initialPosts = [] }) {
       const res = await fetch(`/api/v1/search?${params.toString()}`);
       if (!res.ok) throw new Error("Search failed");
       const data = await res.json();
-      setResults(cursor ? (prev: Post[]) => [...prev, ...data.posts] : data.posts);
+      setResults(cursor ? (prev) => [...prev, ...data.posts] : data.posts);
       setNextCursor(data.nextCursor);
       setHasMore(data.hasMore);
     } catch (error) {
